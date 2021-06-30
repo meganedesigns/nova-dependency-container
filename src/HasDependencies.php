@@ -125,13 +125,13 @@ trait HasDependencies
      */
     protected function applyRulesForChildFields($childField)
     {
-        if (isset($childField->rules)) {
+        if (isset($childField->rules) && is_string($childField->attribute)) {
             $childField->rules[] = "sometimes:required:".$childField->attribute;
         }
-        if (isset($childField->creationRules)) {
+        if (isset($childField->creationRules) && is_string($childField->attribute)) {
             $childField->creationRules[] = "sometimes:required:".$childField->attribute;
         }
-        if (isset($childField->updateRules)) {
+        if (isset($childField->updateRules) && is_string($childField->attribute)) {
             $childField->updateRules[] = "sometimes:required:".$childField->attribute;
         }
         return $childField;
